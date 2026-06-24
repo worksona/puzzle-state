@@ -1,0 +1,17 @@
+{
+  "name": "puzzle-state",
+  "version": "0.1.0",
+  "description": "Local-first bazaar of puzzles and puzzling things: drop an input, nightly puzzle-state researches/designs/builds/playtests/packages/publishes a puzzle (cipher, logic, paper, casual web, ARG, riddle, escape, treasure-hunt).",
+  "owner": {
+    "name": "David Olsson",
+    "url": "https://atomic47.co"
+  },
+  "plugins": [
+    {
+      "name": "puzzle-state",
+      "version": "0.1.0",
+      "description": "Bazaar of puzzles and puzzling things. Mark an input with 🧩 (or drop into ~/bazaar/inbox/); nightly the facility researches/designs/builds/playtests/packages/publishes.",
+      "source": "./plugin"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://atomic47.co/puzzle-state/schemas/puzzle.schema.yaml"
+title: Puzzle
+type: object
+required: [id, slug, phase, created, updated, source]
+additionalProperties: false
+properties:
+  id:
+    type: string
+    pattern: "^PUZ-[0-9]{4}$"
+  slug:
+    type: string
+    pattern: "^[a-z0-9][a-z0-9-]{0,49}$"
+  phase:
+    type: string
+    enum: [candidate, researched, designed, built, build-failed, tested, packaged, reported, published]
+  created:
+    type: string
+    format: date-time
+  updated:
+    type: string
+    format: date-time
+  source:
+    type: object
+    required: [surface]
+    additionalProperties: false
+    properties:
+      surface: { type: string, enum: [slack, inbox, query] }
+      channel: { type: [string, "null"] }
+      message_ts: { type: [string, "null"] }
+      marked_by: { type: [string, "null"] }
+      marked_with: { type: [string, "null"] }
+      url: { type: [string, "null"] }
+      prompt: { type: [string, "null"] }
+  research:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      theme: { type: string }
+      mechanics_inspiration: { type: string }
+      comparables:
+        type: array
+        items: { type: string }
+      source_refs:
+        type: array
+        items: { type: string }
+  design:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      type:
+        type: string
+        enum: [cipher, logic, paper, casual-web, arg, riddle, escape, treasure-hunt]
+      template: { type: string }
+      difficulty_target:
+        type: string
+        enum: [beginner, intermediate, advanced]
+      win_condition: { type: string }
+      estimated_solve_time_min: { type: number }
+  build:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      artifact_kind:
+        type: string
+        enum: [html-static, pdf, breadcrumb-pack, docker-web, scsiwyg-post]
+      base_image: { type: [string, "null"] }
+      exit_code: { type: [integer, "null"] }
+      duration_s: { type: [number, "null"] }
+      status:
+        type: [string, "null"]
+        enum: [built, build-failed, null]
+  test:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      solver_passed: { type: [boolean, "null"] }
+      unique_solution: { type: [boolean, "null"] }
+      difficulty_actual: { type: string }
+      notes: { type: string }
+      status:
+        type: [string, "null"]
+        enum: [solvable, unsolvable, ambiguous, null]
+  package:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      bundle_ref: { type: [string, "null"] }
+      image: { type: [string, "null"] }
+  report:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      ref: { type: [string, "null"] }
+      solution_ref: { type: [string, "null"] }
+  curation:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      collection_ids:
+        type: array
+        items: { type: string, pattern: "^COL-[0-9]{4}$" }
+      tags:
+        type: array
+        items: { type: string }
+  outputs:
+    type: [object, "null"]
+    additionalProperties: false
+    properties:
+      gist_url: { type: [string, "null"] }
+      blog_post_id: { type: [string, "null"] }
+      solution_gist_url: { type: [string, "null"] }
+      work_state_event_id: { type: [string, "null"] }

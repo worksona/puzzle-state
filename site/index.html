@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>puzzle-state — onboarding deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E14; --ink2:#10151F; --ink3:#171D29;
+    --paper:#F4F3EF; --dim:#A9AEB8; --faint:#6B7280;
+    --line:#222937; --line2:#39414F;
+    --yellow:#F6AC2D; --teal:#62BAB7; --rose:#E0533D; --green:#7BA86B; --violet:#9293C6;
+    --fh:"Montserrat","Helvetica Neue",Arial,sans-serif;
+    --fm:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --px:130px;
+    --t-eyebrow:24px; --t-title:74px; --t-title-lg:92px; --t-sub:36px;
+    --t-body:28px; --t-small:24px; --t-mono:25px; --t-mono-sm:24px; --t-micro:18px;
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; background:var(--ink); height:100%; }
+  body{ overflow:hidden; }
+  ::selection{ background:var(--paper); color:var(--ink); }
+  @keyframes rise{ from{ transform:translateY(16px); } to{ transform:translateY(0); } }
+  @media (prefers-reduced-motion:no-preference){
+    [data-deck-active] .rise{ animation:rise .6s cubic-bezier(0.22,0.61,0.36,1) both; }
+    [data-deck-active] .rise2{ animation:rise .6s cubic-bezier(0.22,0.61,0.36,1) .09s both; }
+    [data-deck-active] .rise3{ animation:rise .6s cubic-bezier(0.22,0.61,0.36,1) .18s both; }
+    [data-deck-active] .rise4{ animation:rise .6s cubic-bezier(0.22,0.61,0.36,1) .27s both; }
+  }
+  .deck > section{ width:1920px; height:1080px; }
+
+  /* Print: one slide per page for PDF export */
+  @media print{
+    html,body{ background:#fff; overflow:visible; height:auto; }
+    body{ overflow:visible; }
+    #deck-hud, #deck-help{ display:none !important; }
+    .deck{ position:static !important; transform:none !important; left:auto !important; top:auto !important; width:1920px !important; height:auto !important; display:block !important; }
+    .deck > section{ display:flex !important; page-break-after:always; break-after:page; width:1920px !important; height:1080px !important; }
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- ============================ SLIDE 0 — INSTALL ============================ -->
+<section data-label="puzzle-state · install" data-speaker-notes="Install slide. Puzzle-state ships as a single Claude Code plugin distributed as a one-plugin marketplace. Both Claude Code (terminal CLI) and Claude Cowork (desktop and web) accept the same /plugin commands. Paste the two lines into either surface, restart, and the twelve /puzzle-* skills appear. The public repo lives at worksona/puzzle-state on GitHub. Sibling to forge-state." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:38px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 00 · Install</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title-lg);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">puzzle-<span style="color:var(--yellow);font-style:italic">state</span></h1>
+  <p class="rise3" style="font-family:var(--fh);font-weight:400;font-size:var(--t-sub);line-height:1.35;color:var(--dim);margin:32px 0 56px;max-width:38ch">A local-first bazaar of puzzles and puzzling things — install in two lines.</p>
+  <div class="rise4" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1500px">
+    <div style="border:1px solid var(--yellow);background:linear-gradient(180deg,rgba(246,172,45,.06),rgba(246,172,45,.01));padding:30px 32px 28px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--yellow)">
+        <span style="width:9px;height:9px;background:var(--yellow)"></span>
+        <span>Claude Code · CLI</span>
+      </div>
+      <pre style="margin:0;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper);line-height:1.65;white-space:pre-wrap"><span style="color:var(--faint)">$</span> /plugin marketplace add <span style="color:var(--yellow)">worksona/puzzle-state</span>
+<span style="color:var(--faint)">$</span> /plugin install <span style="color:var(--yellow)">puzzle-state@puzzle-state</span></pre>
+    </div>
+    <div style="border:1px solid var(--violet);background:linear-gradient(180deg,rgba(146,147,198,.06),rgba(146,147,198,.01));padding:30px 32px 28px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--violet)">
+        <span style="width:9px;height:9px;background:var(--violet)"></span>
+        <span>Claude Cowork · Desktop</span>
+      </div>
+      <pre style="margin:0;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper);line-height:1.65;white-space:pre-wrap"><span style="color:var(--faint)">›</span> /plugin marketplace add <span style="color:var(--violet)">worksona/puzzle-state</span>
+<span style="color:var(--faint)">›</span> /plugin install <span style="color:var(--violet)">puzzle-state@puzzle-state</span></pre>
+    </div>
+  </div>
+  <div class="rise4" style="margin-top:42px;display:flex;gap:28px;align-items:center;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint);flex-wrap:wrap">
+    <a href="https://github.com/worksona/puzzle-state" style="color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:3px">github.com/worksona/puzzle-state</a>
+    <span style="color:var(--line2)">·</span>
+    <a href="https://puzzle-state.netlify.app" style="color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:3px">puzzle-state.netlify.app</a>
+    <span style="color:var(--line2)">·</span>
+    <span>MIT · sibling to forge-state · desk-state · work-state · notella</span>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 1 — THE NIGHT SHIFT ============================ -->
+<section data-label="The night shift" data-speaker-notes="You're already curious about more puzzles than you can ever build. puzzle-state is the night shift that does it for you. Flag an input — a 🧩 reaction on a source URL, a file dropped in the bazaar inbox, a query — and by morning each one has been researched, designed into a puzzle, built inside a sealed sandbox, playtested for solvability, packaged into a runnable artifact, and shipped as a writeup plus a gated solution key." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:row;align-items:center;gap:80px;overflow:hidden;position:relative">
+  <div style="flex:0 0 820px;display:flex;flex-direction:column">
+    <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:44px">
+      <span style="width:9px;height:9px;background:var(--yellow)"></span>
+      <span>§ 01 · The night shift</span>
+    </div>
+    <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title-lg);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0;max-width:14ch">Curiosity, <span style="color:var(--yellow);font-style:italic">puzzled.</span></h1>
+    <p class="rise3" style="font-family:var(--fh);font-weight:400;font-size:var(--t-sub);line-height:1.35;color:var(--dim);margin:46px 0 0;max-width:26ch">You mark a source. Puzzle does the rest — by morning.</p>
+    <div class="rise4" style="margin-top:48px;display:flex;align-items:center;gap:18px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--faint)">
+      <span style="color:var(--yellow);font-size:22px">🧩</span>
+      <span>react · sleep · receive</span>
+    </div>
+  </div>
+  <div class="rise4" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:24px">
+    <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--faint);align-self:flex-start">Inbound — Slack reaction or inbox file</div>
+    <div style="width:100%;border:1px solid var(--line2);background:var(--ink2);padding:22px 24px;display:flex;align-items:center;gap:18px;font-family:var(--fh);font-size:var(--t-small);color:var(--dim)">
+      <span style="font-family:var(--fm);font-size:var(--t-micro);color:var(--teal)">#development</span>
+      <span style="flex:1;font-style:italic">"Voynich Manuscript folio 86v — a cipher candidate"</span>
+      <span style="font-size:28px">🧩</span>
+    </div>
+    <div style="width:100%;border:1px solid var(--line2);background:var(--ink2);padding:18px 24px;display:flex;align-items:center;gap:18px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--dim)">
+      <span style="color:var(--violet)">~/bazaar/inbox/</span>
+      <span style="flex:1;color:var(--paper)">labyrinth-mythos.url</span>
+    </div>
+    <div style="color:var(--yellow);font-size:46px;letter-spacing:.1em">↓</div>
+    <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--faint);align-self:flex-start">Outbound — by morning</div>
+    <div style="display:flex;flex-direction:column;gap:12px;width:100%">
+      <div style="border:1px solid var(--line2);padding:16px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--yellow);width:22px">▸</span>gist <span style="color:var(--faint);margin-left:auto;font-size:var(--t-micro)">report · no solution</span></div>
+      <div style="border:1px solid var(--line2);padding:16px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--teal);width:22px">▸</span>scsiwyg post <span style="color:var(--faint);margin-left:auto;font-size:var(--t-micro)">auto · public</span></div>
+      <div style="border:1px solid var(--line2);padding:16px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--violet);width:22px">▸</span>gated solution gist <span style="color:var(--faint);margin-left:auto;font-size:var(--t-micro)">solution key · secret</span></div>
+      <div style="border:1px solid var(--line2);padding:16px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--rose);width:22px">▸</span>deploy bundle <span style="color:var(--faint);margin-left:auto;font-size:var(--t-micro)">HTML · PDF · ARG pack</span></div>
+      <div style="border:1px solid var(--line2);padding:16px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--green);width:22px">▸</span>ghcr image <span style="color:var(--faint);margin-left:auto;font-size:var(--t-micro)">if web/ARG runtime</span></div>
+    </div>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 2 — POSITIONING ============================ -->
+<section data-label="Positioning" data-speaker-notes="Position puzzle-state as a sibling to forge-state, desk-state, work-state, and notella. Where forge ships open-source experiments, puzzle-state ships puzzles. Same pattern, different domain: single-writer, file-per-entity YAML, two-plane isolation. The nightly cadence matters. Unsolvable is a finding matters. The deployable artifact matters. A puzzle that ships is a puzzle a stranger can pick up and try." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:48px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 02 · Positioning</span>
+  </div>
+  <div class="rise2" style="display:flex;align-items:center;gap:22px;margin-bottom:42px">
+    <div style="width:62px;height:62px;border:1.5px solid var(--violet);display:flex;align-items:center;justify-content:center"><span style="color:var(--violet);font-size:26px;line-height:1">◆</span></div>
+    <span style="font-family:var(--fh);font-weight:400;font-style:italic;font-size:32px;letter-spacing:.01em;color:var(--dim)">a bazaar, not a publisher</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title-lg);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0;max-width:22ch">A bench for <span style="color:var(--yellow);font-style:italic">puzzles</span> — sibling to forge-state.</h1>
+  <div class="rise3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:60px">
+    <div style="border:1px solid var(--line2);padding:28px 26px;display:flex;flex-direction:column;gap:12px">
+      <div style="color:var(--yellow);font-size:19px;line-height:1">◆</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:25px;color:var(--paper)">Nightly cadence</div>
+      <p style="font-family:var(--fh);font-size:var(--t-small);line-height:1.45;color:var(--dim);margin:0">Curiosity is bursty; design is patient. Mark all day, puzzles by morning.</p>
+    </div>
+    <div style="border:1px solid var(--line2);padding:28px 26px;display:flex;flex-direction:column;gap:12px">
+      <div style="color:var(--teal);font-size:19px;line-height:1">◆</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:25px;color:var(--paper)">Sealed sandbox</div>
+      <p style="font-family:var(--fh);font-size:var(--t-small);line-height:1.45;color:var(--dim);margin:0">Generated game code never runs in your shell. Docker, deny-egress, no secrets.</p>
+    </div>
+    <div style="border:1px solid var(--line2);padding:28px 26px;display:flex;flex-direction:column;gap:12px">
+      <div style="color:var(--rose);font-size:19px;line-height:1">◆</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:25px;color:var(--paper)">Unsolvable is a finding</div>
+      <p style="font-family:var(--fh);font-size:var(--t-small);line-height:1.45;color:var(--dim);margin:0">A puzzle that fails playtest still ships as an honest report. Parallels forge's build-failed.</p>
+    </div>
+    <div style="border:1px solid var(--line2);padding:28px 26px;display:flex;flex-direction:column;gap:12px">
+      <div style="color:var(--violet);font-size:19px;line-height:1">◆</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:25px;color:var(--paper)">Playable artifact</div>
+      <p style="font-family:var(--fh);font-size:var(--t-small);line-height:1.45;color:var(--dim);margin:0">Every success ships HTML, PDF, or an ARG pack. A stranger can pick it up tonight.</p>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-body);color:var(--dim);margin:54px 0 0;max-width:60ch">Local-first. <span style="color:var(--yellow)">No server.</span> Same single-writer + file-per-entity + two-plane pattern as forge-state — the domain is puzzles, not code.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 3 — THE ONE IDEA ============================ -->
+<section data-label="The one idea" data-speaker-notes="The whole product in one phrase: a bazaar of puzzles and puzzling things. You mark a source — a Slack post, a URL, a theme — and by morning a puzzle exists. One PUZ-NNNN at a time, carried through a fixed lifecycle. Unsolvable is a finding, parallel to forge's build-failed: an honest record of a puzzle that didn't survive playtest is more useful than a quiet failure." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 03 · The one idea</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">A bazaar of puzzles and puzzling things.</h1>
+  <div class="rise3" style="flex:1;display:flex;align-items:center;justify-content:center;gap:54px;margin-top:30px">
+    <div style="flex:0 0 420px;border:1.5px solid var(--yellow);background:linear-gradient(180deg,rgba(246,172,45,.10),rgba(246,172,45,.02));box-shadow:0 0 60px rgba(246,172,45,.18);padding:48px 36px;display:flex;flex-direction:column;gap:18px;text-align:center;min-height:340px">
+      <div style="font-family:var(--fh);font-weight:600;font-size:54px;letter-spacing:.04em;color:var(--yellow)">MARK</div>
+      <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--paper);line-height:1.4">React 🧩 on a source post, or drop a URL in <span style="font-family:var(--fm)">~/bazaar/inbox/</span>.</div>
+      <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);margin-top:auto;line-height:1.55">reaction or file ·<br>self-only · idempotent</div>
+    </div>
+    <div style="color:var(--line2);font-size:54px">→</div>
+    <div style="flex:0 0 420px;border:1.5px solid var(--teal);background:linear-gradient(180deg,rgba(98,186,183,.08),rgba(98,186,183,.02));padding:48px 36px;display:flex;flex-direction:column;gap:18px;text-align:center;min-height:340px">
+      <div style="font-family:var(--fh);font-weight:600;font-size:54px;letter-spacing:.04em;color:var(--teal)">DESIGN</div>
+      <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--paper);line-height:1.4">Research the source. Pick a type. Build in the sandbox. Playtest.</div>
+      <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);margin-top:auto;line-height:1.55">research → design → build<br>→ test for solvability</div>
+    </div>
+    <div style="color:var(--line2);font-size:54px">→</div>
+    <div style="flex:0 0 420px;border:1.5px solid var(--violet);background:linear-gradient(180deg,rgba(146,147,198,.08),rgba(146,147,198,.02));padding:48px 36px;display:flex;flex-direction:column;gap:18px;text-align:center;min-height:340px">
+      <div style="font-family:var(--fh);font-weight:600;font-size:54px;letter-spacing:.04em;color:var(--violet)">SHIP</div>
+      <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--paper);line-height:1.4">Gist + blog + gated solution + deploy bundle. Solvable or unsolvable — both ship.</div>
+      <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);margin-top:auto;line-height:1.55">scrub secrets · redact solution ·<br>publish honest reports</div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-body);color:var(--dim);margin:30px 0 0;max-width:none">The unit of work is a <span style="color:var(--yellow);font-style:italic">puzzle</span> — one PUZ-NNNN, carried through a fixed lifecycle. <span style="color:var(--rose);font-style:italic">Unsolvable is a finding</span>, not a halt.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 4 — TWO-PLANE ISOLATION ============================ -->
+<section data-label="Two-plane isolation" data-speaker-notes="This is the differentiator, shared with forge-state. The host is the control plane: it holds your Anthropic, Slack, GitHub, and scsiwyg secrets, runs the reasoning and design choices, and publishes. The container is the data plane: no secrets, registries-only egress, and the only place untrusted generators, solvers, and playtest scripts ever execute. Generated game code never runs in your shell. Secrets never enter the container; outputs are scrubbed before they ship." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:28px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 04 · Two-plane isolation</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">Trusted secrets here. <span style="color:var(--teal)">Untrusted generators there.</span></h1>
+  <div class="rise3" style="flex:1;display:grid;grid-template-columns:1fr 120px 1fr;gap:30px;margin-top:50px;align-items:stretch">
+    <div style="border:1.5px solid var(--yellow);background:linear-gradient(180deg,rgba(246,172,45,.08),rgba(246,172,45,.02));padding:34px 32px;display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--yellow)">Host · control plane</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:32px;color:var(--paper)">Reasons. Publishes. Holds secrets.</div>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px;font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">
+        <li>▸ Anthropic · Slack · GitHub · scsiwyg · GHCR keys</li>
+        <li>▸ orchestrator · harvesters · researcher · designer · reporter · publisher</li>
+        <li>▸ egress: api.anthropic.com, slack, github, scsiwyg, registries</li>
+        <li>▸ sops-age secret store, loaded at run start</li>
+      </ul>
+      <div style="margin-top:auto;font-family:var(--fm);font-size:var(--t-micro);color:var(--faint)">never executes generated game code</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px;font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);letter-spacing:.1em;text-align:center">
+      <div style="color:var(--yellow);font-size:36px">→</div>
+      <div style="line-height:1.6">source +<br>design.md</div>
+      <div style="height:1px;width:100%;background:var(--line2);margin:8px 0"></div>
+      <div style="line-height:1.6">artifact ·<br>test log</div>
+      <div style="color:var(--teal);font-size:36px">←</div>
+    </div>
+    <div style="border:1.5px solid var(--teal);background:linear-gradient(180deg,rgba(98,186,183,.08),rgba(98,186,183,.02));padding:34px 32px;display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--teal)">Container · data plane</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:32px;color:var(--paper)">Renders. Solves. No secrets.</div>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:11px;font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">
+        <li>▸ fresh container per puzzle · torn down after read</li>
+        <li>▸ builder · tester · packager run here</li>
+        <li>▸ egress: package registries only (deny-default)</li>
+        <li>▸ CPU 4 · mem 8g · per-puzzle timeout 1800s</li>
+      </ul>
+      <div style="margin-top:auto;font-family:var(--fm);font-size:var(--t-micro);color:var(--faint)">never sees a host token</div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-body);color:var(--dim);margin:30px 0 0">The boundary is crossed <span style="color:var(--yellow);font-style:italic">one way only.</span> Nothing trusted enters the container; nothing untrusted runs on the host.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · two-plane isolation</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 5 — LIFECYCLE ============================ -->
+<section data-label="The lifecycle" data-speaker-notes="Every puzzle walks the same phase graph. Candidate comes from a marked source. Researched captures theme, lore, facts, mechanics, source-refs. Designed picks the taxonomy type and lays out mechanics + win condition + difficulty target. Built produces the artifact in the sandbox. Tested either reports solvable or unsolvable — both advance. Packaged emits the deploy bundle. Reported writes the public report and gated solution. Published fans out to gist, blog, and the gated solution gist. Phase is the queue: any non-terminal puzzle is up next." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 05 · The lifecycle</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">Eight phases. One queue. Phase is the queue.</h1>
+  <div class="rise3" style="flex:1;display:flex;flex-direction:column;justify-content:center;margin-top:30px;gap:42px">
+    <!-- main happy path -->
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:nowrap;justify-content:center">
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--dim)">candidate</div>
+      <span style="color:var(--line2);font-size:24px">→</span>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--paper)">researched</div>
+      <span style="color:var(--line2);font-size:24px">→</span>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--paper)">designed</div>
+      <span style="color:var(--line2);font-size:24px">→</span>
+      <div style="border:1.5px solid var(--yellow);background:rgba(246,172,45,.08);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--yellow);font-weight:600">built</div>
+      <span style="color:var(--line2);font-size:24px">→</span>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--paper)">tested</div>
+      <span style="color:var(--line2);font-size:24px">→</span>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--paper)">packaged</div>
+      <span style="color:var(--line2);font-size:24px">→</span>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--paper)">reported</div>
+      <span style="color:var(--green);font-size:24px">→</span>
+      <div style="border:1.5px solid var(--green);background:rgba(123,168,107,.08);padding:16px 18px;font-family:var(--fm);font-size:21px;color:var(--green);font-weight:600">published</div>
+    </div>
+    <!-- branches -->
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;align-items:center;gap:14px;justify-content:center">
+        <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);letter-spacing:.1em;text-transform:uppercase">on build fail ↓</div>
+        <div style="border:1.5px solid var(--rose);background:rgba(224,83,61,.06);padding:14px 18px;font-family:var(--fm);font-size:20px;color:var(--rose);font-weight:600">build-failed</div>
+        <span style="color:var(--rose);font-size:24px">→</span>
+        <div style="border:1px solid var(--rose);padding:14px 18px;font-family:var(--fm);font-size:20px;color:var(--paper)">reported (failure sense)</div>
+        <span style="color:var(--rose);font-size:24px">→</span>
+        <div style="border:1px solid var(--rose);padding:14px 18px;font-family:var(--fm);font-size:20px;color:var(--paper)">published</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;justify-content:center">
+        <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);letter-spacing:.1em;text-transform:uppercase">on tested:unsolvable ↓</div>
+        <div style="border:1.5px solid var(--violet);background:rgba(146,147,198,.08);padding:14px 18px;font-family:var(--fm);font-size:20px;color:var(--violet);font-weight:600">tested · unsolvable</div>
+        <span style="color:var(--violet);font-size:24px">→</span>
+        <div style="border:1px solid var(--violet);padding:14px 18px;font-family:var(--fm);font-size:20px;color:var(--paper)">reported (finding sense)</div>
+        <span style="color:var(--violet);font-size:24px">→</span>
+        <div style="border:1px solid var(--violet);padding:14px 18px;font-family:var(--fm);font-size:20px;color:var(--paper)">published</div>
+      </div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-body);color:var(--dim);margin:30px 0 0">Unsolvable is <span style="color:var(--violet);font-style:italic">terminal-with-findings</span>, not a halt. The failure routes to a real published report.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · phase = queue</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 6 — SUBSTRATE ============================ -->
+<section data-label="The substrate" data-speaker-notes="The memory is a folder you can read. One folder per puzzle, with its research, design, build files, the artifact itself, a gated solution.md, test log, deploy bundle, and a public report all sitting alongside. The activity log is append-only NDJSON — you never rewrite history. No database. Visible bazaar/ with a visible state/ subfolder. Single-writer is enforced by bazaar.lock. Collections live alongside puzzles for curated bundles." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 06 · The substrate</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">The bazaar is a folder you can read.</h1>
+  <div class="rise3" style="flex:1;display:flex;gap:50px;align-items:stretch;margin-top:46px">
+    <div style="flex:1;display:flex;flex-direction:column;gap:22px">
+      <div style="border:1px solid var(--line2);padding:28px 30px;display:flex;flex-direction:column;gap:11px">
+        <div style="font-family:var(--fh);font-weight:600;font-size:28px;color:var(--paper);line-height:1.25">No database. No dotfiles.</div>
+        <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.45">Plain YAML and NDJSON on disk. Browsable from your file manager. <span style="color:var(--yellow)">Your puzzles are your puzzles.</span></div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <div style="border:1px solid var(--line2);padding:10px 14px;font-family:var(--fm);font-size:var(--t-micro);color:var(--dim)">file-per-entity</div>
+        <div style="border:1px solid var(--line2);padding:10px 14px;font-family:var(--fm);font-size:var(--t-micro);color:var(--dim)">append-only NDJSON</div>
+        <div style="border:1px solid var(--line2);padding:10px 14px;font-family:var(--fm);font-size:var(--t-micro);color:var(--dim)">single-writer · bazaar.lock</div>
+        <div style="border:1px solid var(--line2);padding:10px 14px;font-family:var(--fm);font-size:var(--t-micro);color:var(--dim)">YAML canonical · index derived</div>
+        <div style="border:1px solid var(--line2);padding:10px 14px;font-family:var(--fm);font-size:var(--t-micro);color:var(--dim)">solution.md gated</div>
+        <div style="border:1px solid var(--line2);padding:10px 14px;font-family:var(--fm);font-size:var(--t-micro);color:var(--dim)">collections cross-link</div>
+      </div>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:24px 28px;display:flex;flex-direction:column;gap:6px">
+        <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">single writer</div>
+        <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--paper);line-height:1.4">The nightly run is the only writer. <span style="font-family:var(--fm);color:var(--yellow)">bazaar.lock</span> refuses an overlapping run.</div>
+      </div>
+    </div>
+    <div style="flex:0 0 900px;border:1px solid var(--line2);background:var(--ink2);padding:30px 34px;font-family:var(--fm);font-size:22px;line-height:1.55">
+      <div style="color:var(--yellow)">~/bazaar/</div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;manifest.yaml<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;← channels, sources, surfaces, caps</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;inbox/<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← user-dropped URLs &amp; files</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;puzzles/</div>
+      <div style="color:var(--teal)">&nbsp;&nbsp;&nbsp;&nbsp;PUZ-0007-voynich-folio-86v/</div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;puzzle.yaml<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;← the canonical record</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;research.md</div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;design.md<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type · mechanics · win cond.</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;build/<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source files</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;artifact/<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;the playable thing</span></div>
+      <div style="color:var(--violet)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;solution.md<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;GATED — never in gist body</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test/log.txt</div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;deploy/<span style="color:var(--faint)">&nbsp;&nbsp;Dockerfile · RUN.md (if web/ARG)</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;report.md</div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;collections/<span style="color:var(--faint)">&nbsp;&nbsp;COL-NNNN — curated bundles</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;state/<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible — not .state/</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;state.json</div>
+      <div style="color:var(--yellow)">&nbsp;&nbsp;&nbsp;&nbsp;activity.ndjson<span style="color:var(--faint)">&nbsp;append-only</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;cursor.yaml</div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;bazaar.lock<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;single-writer guard</span></div>
+      <div style="color:var(--paper)">&nbsp;&nbsp;&nbsp;&nbsp;logs/run-YYYY-MM-DD.txt</div>
+    </div>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · visible facility</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 7 — TWELVE SKILLS ============================ -->
+<section data-label="Twelve skills" data-speaker-notes="Twelve skills — three more than forge-state. Two net-new: puzzle-harvester-sources (because research-driven puzzles need an explicit source pipeline beyond Slack) and puzzle-curator (because a bazaar is more than a pile — it needs collections, tags, cross-links). Every skill routes its reads and writes through puzzle-state. No skill writes the substrate directly. Group them by job: substrate, intake (two harvesters), design, build, ship, curate, conduct." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:28px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 07 · Twelve skills</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">12 skills. Each does exactly one job.</h1>
+  <div class="rise3" style="flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto auto;gap:22px;margin-top:38px">
+    <!-- Substrate -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--yellow);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--yellow)">Substrate</div>
+      <div style="border:1.5px solid var(--yellow);background:rgba(246,172,45,.05);padding:16px 18px;display:flex;flex-direction:column;gap:5px">
+        <div style="font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--yellow);font-weight:600">puzzle-state</div>
+        <div style="font-family:var(--fh);font-size:21px;color:var(--dim);line-height:1.4">The spine. The only writer to disk; every other skill routes through it.</div>
+      </div>
+    </div>
+    <!-- Intake -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--teal);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--teal)">Intake · two paths</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="border:1px solid var(--line2);padding:14px 14px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:20px;color:var(--paper)">harvester-slack</div><div style="font-family:var(--fh);font-size:17px;color:var(--dim);line-height:1.35">🧩 in <span style="font-family:var(--fm)">#development</span> → candidate</div></div>
+        <div style="border:1.5px solid var(--teal);background:rgba(98,186,183,.05);padding:14px 14px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:20px;color:var(--teal)">harvester-sources <span style="font-size:13px;color:var(--faint)">NEW</span></div><div style="font-family:var(--fh);font-size:17px;color:var(--dim);line-height:1.35">inbox/ URLs &amp; files → candidate</div></div>
+      </div>
+    </div>
+    <!-- Research -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--violet);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--violet)">Research</div>
+      <div style="border:1px solid var(--line2);padding:16px 18px;display:flex;flex-direction:column;gap:5px">
+        <div style="font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)">puzzle-researcher</div>
+        <div style="font-family:var(--fh);font-size:21px;color:var(--dim);line-height:1.4">Fills theme / lore / facts / mechanics / source-refs. Writes <span style="font-family:var(--fm)">research.md</span>.</div>
+      </div>
+    </div>
+    <!-- Design & Build -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--rose);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--rose)">Design &amp; Build</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div style="border:1px solid var(--line2);padding:12px 11px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:19px;color:var(--paper)">designer</div><div style="font-family:var(--fh);font-size:15px;color:var(--dim);line-height:1.3">pick type · mechanics · win cond.</div></div>
+        <div style="border:1px solid var(--line2);padding:12px 11px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:19px;color:var(--paper)">builder</div><div style="font-family:var(--fh);font-size:15px;color:var(--dim);line-height:1.3">render artifact in sandbox</div></div>
+        <div style="border:1px solid var(--line2);padding:12px 11px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:19px;color:var(--paper)">tester</div><div style="font-family:var(--fh);font-size:15px;color:var(--dim);line-height:1.3">solver pass · solvability</div></div>
+      </div>
+    </div>
+    <!-- Package & Curate -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--violet);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--violet)">Package &amp; Curate</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="border:1px solid var(--line2);padding:14px 14px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:20px;color:var(--paper)">packager</div><div style="font-family:var(--fh);font-size:17px;color:var(--dim);line-height:1.35">deploy/ + GHCR push (web/ARG)</div></div>
+        <div style="border:1.5px solid var(--violet);background:rgba(146,147,198,.05);padding:14px 14px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:20px;color:var(--violet)">curator <span style="font-size:13px;color:var(--faint)">NEW</span></div><div style="font-family:var(--fh);font-size:17px;color:var(--dim);line-height:1.35">collections · tags · cross-links</div></div>
+      </div>
+    </div>
+    <!-- Ship -->
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--green);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--green)">Ship</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div style="border:1px solid var(--line2);padding:14px 14px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:20px;color:var(--paper)">reporter</div><div style="font-family:var(--fh);font-size:17px;color:var(--dim);line-height:1.35">report.md (success &amp; unsolvable)</div></div>
+        <div style="border:1px solid var(--line2);padding:14px 14px;display:flex;flex-direction:column;gap:4px"><div style="font-family:var(--fm);font-size:20px;color:var(--paper)">publisher</div><div style="font-family:var(--fh);font-size:17px;color:var(--dim);line-height:1.35">gist · blog · gated solution · scrub</div></div>
+      </div>
+    </div>
+    <!-- Conductor (spans across) -->
+    <div style="grid-column:1 / span 3;display:flex;flex-direction:column;gap:10px">
+      <div style="border-top:3px solid var(--paper);padding-top:10px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--paper)">Conductor</div>
+      <div style="border:1.5px solid var(--paper);background:rgba(244,243,239,.04);padding:18px 22px;display:flex;align-items:center;gap:20px">
+        <div style="font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper);font-weight:600">▸ puzzle-orchestrator</div>
+        <div style="font-family:var(--fh);font-size:22px;color:var(--dim);line-height:1.4">Nightly queue walk; thin router; supports <span style="font-family:var(--fm)">--once</span> and <span style="font-family:var(--fm)">--dry-run</span>; honors <span style="font-family:var(--fm);color:var(--yellow)">state/bazaar.lock</span>.</div>
+      </div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);margin:18px 0 0">No skill writes the substrate directly — every read and write routes through <span style="color:var(--yellow)">puzzle-state</span>.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · 12 skills</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 8 — SANDBOX ============================ -->
+<section data-label="The sandbox" data-speaker-notes="The sandbox is what makes any of this safe. Docker Desktop is the cross-platform common denominator. The builder selects a base image per artifact_kind: node for casual-web games, pandoc for PDFs, headless-chrome for ARG rendering, generic ubuntu for static HTML. Egress is deny-by-default; only package registries get through. CPU, memory, and per-puzzle wall-clock are capped from the manifest. Containers are fresh per puzzle and torn down once results are read. The tester also runs here — solver passes, headless playtest scripts." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 08 · The sandbox</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">Disposable. Capped. <span style="color:var(--teal)">Per artifact kind.</span></h1>
+  <div class="rise3" style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:46px">
+    <div style="border:1.5px solid var(--teal);background:linear-gradient(180deg,rgba(98,186,183,.06),rgba(98,186,183,.01));padding:32px 30px;display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.2em;text-transform:uppercase;color:var(--teal)">Container · per puzzle · disposable</div>
+      <div style="font-family:var(--fh);font-weight:600;font-size:30px;color:var(--paper)">Docker, deny-egress, capped.</div>
+      <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:13px;font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.45">
+        <li><span style="color:var(--teal);font-family:var(--fm);width:24px;display:inline-block">▸</span>Per artifact_kind base: <span style="font-family:var(--fm);color:var(--paper)">node:20 · pandoc · headless-chrome · ubuntu:24.04</span></li>
+        <li><span style="color:var(--teal);font-family:var(--fm);width:24px;display:inline-block">▸</span>Runs: <span style="color:var(--paper)">render artifact · solver pass · packager</span></li>
+        <li><span style="color:var(--teal);font-family:var(--fm);width:24px;display:inline-block">▸</span>Egress: <span style="color:var(--paper)">package registries only</span> (deny-default; no host secrets)</li>
+        <li><span style="color:var(--teal);font-family:var(--fm);width:24px;display:inline-block">▸</span>Caps: <span style="font-family:var(--fm);color:var(--paper)">cpu=4 · mem=8g · per_puzzle_timeout_s=1800</span></li>
+        <li><span style="color:var(--teal);font-family:var(--fm);width:24px;display:inline-block">▸</span>Fresh container per puzzle; torn down after results are read.</li>
+      </ul>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)">Bases keyed by artifact_kind</div>
+      <div style="border:1px solid var(--line2);background:var(--ink2);font-family:var(--fm);font-size:21px;line-height:1.55">
+        <div style="display:grid;grid-template-columns:200px 1fr;padding:14px 22px;border-bottom:1px solid var(--line2);color:var(--faint);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase"><div>kind</div><div>image</div></div>
+        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 22px;border-bottom:1px solid var(--line2)"><div style="color:var(--yellow)">html-static</div><div style="color:var(--paper)">node:20-alpine</div></div>
+        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 22px;border-bottom:1px solid var(--line2)"><div style="color:var(--teal)">pdf</div><div style="color:var(--paper)">pandoc/latex:3</div></div>
+        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 22px;border-bottom:1px solid var(--line2)"><div style="color:var(--violet)">docker-web</div><div style="color:var(--paper)">node:20 · python:3.12</div></div>
+        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 22px;border-bottom:1px solid var(--line2)"><div style="color:var(--rose)">breadcrumb-pack</div><div style="color:var(--paper)">ubuntu:24.04 + zip</div></div>
+        <div style="display:grid;grid-template-columns:200px 1fr;padding:16px 22px"><div style="color:var(--green)">solver pass</div><div style="color:var(--paper)">headless-chrome / python</div></div>
+      </div>
+      <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.45">The tester replays the artifact and tries to solve it. <span style="color:var(--violet)">Unsolvable</span> is a real outcome, not an error.</div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-body);color:var(--dim);margin:30px 0 0">Generated game code <span style="color:var(--yellow);font-style:italic">never executes</span> in the host shell. Every render and every solver pass happens in a fresh container.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · sandbox = data plane</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 9 — TAXONOMY ============================ -->
+<section data-label="Puzzle taxonomy" data-speaker-notes="Eight types from spec §10. The designer picks the type from research output plus user hints. Templates live in templates/types/<type>.template/. The mode is hybrid: classify the source, pick a template, improvise within bounds. Templates keep the designer from flailing; improvisation keeps it interesting." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 09 · Puzzle taxonomy</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">Eight types. One template each. Hybrid mode.</h1>
+  <div class="rise3" style="flex:1;display:flex;flex-direction:column;margin-top:34px;border:1px solid var(--line2)">
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;background:var(--ink2);border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">
+      <div style="padding:16px 22px;border-right:1px solid var(--line2)">Type</div>
+      <div style="padding:16px 22px;border-right:1px solid var(--line2)">What it is</div>
+      <div style="padding:16px 22px">Typical artifact</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--yellow);font-weight:600">cipher</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">substitution / stego / classical-crypto</div>
+      <div style="padding:14px 22px;color:var(--paper)">single HTML page + downloadable text</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--teal);font-weight:600">logic</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">grid / deduction / Nikoli-family</div>
+      <div style="padding:14px 22px;color:var(--paper)">interactive HTML or printable PDF</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--violet);font-weight:600">paper</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">print-and-solve</div>
+      <div style="padding:14px 22px;color:var(--paper)">PDF + PNG preview</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--green);font-weight:600">casual-web</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">small browser game</div>
+      <div style="padding:14px 22px;color:var(--paper)">static site bundle</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--rose);font-weight:600">arg</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">alternate-reality breadcrumb trail</div>
+      <div style="padding:14px 22px;color:var(--paper)">multi-surface pack — HTML, gist drops, hidden URLs</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--yellow);font-weight:600">riddle</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">text / lateral thinking</div>
+      <div style="padding:14px 22px;color:var(--paper)">scsiwyg post + comments thread</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--teal);font-weight:600">escape</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">room-style sequence of locks</div>
+      <div style="padding:14px 22px;color:var(--paper)">HTML scene graph</div>
+    </div>
+    <div style="display:grid;grid-template-columns:220px 1.1fr 1.4fr;font-family:var(--fm);font-size:20px">
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--violet);font-weight:600">treasure-hunt</div>
+      <div style="padding:14px 22px;border-right:1px solid var(--line2);color:var(--dim)">clue-chain leading to a target</div>
+      <div style="padding:14px 22px;color:var(--paper)">sequenced hint pack</div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);margin:16px 0 0">The <span style="color:var(--yellow)">designer</span> picks the type from research + hints. The <span style="color:var(--teal)">builder</span> consumes it.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · classify → template → improvise</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 10 — UNSOLVABLE IS A FINDING ============================ -->
+<section data-label="Unsolvable is a finding" data-speaker-notes="Most puzzle pipelines would throw away a failed playtest as a non-event. Puzzle treats it as the most valuable kind of finding, because most of the truth about a puzzle is whether someone other than the designer can actually solve it. So tested:unsolvable routes directly to reported and published, with the test log, the solver trace, and a short narrative of what was ambiguous or unreachable. The failure is the deliverable — parallel to forge's build-failed." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;justify-content:center;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-bottom:36px">
+    <span style="width:9px;height:9px;background:var(--violet)"></span>
+    <span>§ 10 · Unsolvable is a finding</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title-lg);line-height:1.05;letter-spacing:-0.025em;color:var(--paper);margin:0;max-width:22ch">"This puzzle does not survive playtest" is <span style="color:var(--violet);font-style:italic">a finding worth publishing.</span></h1>
+  <div class="rise3" style="display:flex;align-items:center;gap:16px;margin:60px 0 0;flex-wrap:nowrap">
+    <div style="border:1.5px solid var(--violet);background:rgba(146,147,198,.06);padding:24px 28px;font-family:var(--fm);font-size:26px;color:var(--violet);font-weight:600">tested · unsolvable</div>
+    <span style="color:var(--violet);font-size:36px">→</span>
+    <div style="border:1px solid var(--violet);padding:24px 28px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper);max-width:560px;line-height:1.4">reported<br><span style="font-family:var(--fh);font-size:18px;color:var(--dim)">test log + solver trace + short narrative of <em>which clue</em> was ambiguous, <em>where</em>, and <em>why no path</em> existed</span></div>
+    <span style="color:var(--violet);font-size:36px">→</span>
+    <div style="border:1px solid var(--violet);padding:24px 28px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper);max-width:440px;line-height:1.4">published<br><span style="font-family:var(--fh);font-size:18px;color:var(--dim)">gist + scsiwyg blog · scrubbed · linked in the work-state event</span></div>
+  </div>
+  <div class="rise4" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px">
+    <div style="border:1px solid var(--line2);background:var(--ink2);padding:22px 24px"><div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--rose);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">discarded by most</div><div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">failed playtests get tossed. The designer's blind spot stays a blind spot.</div></div>
+    <div style="border:1px solid var(--line2);background:var(--ink2);padding:22px 24px"><div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--yellow);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">kept by puzzle</div><div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">every unsolvable has a test log, a solver trace, and a public writeup.</div></div>
+    <div style="border:1px solid var(--line2);background:var(--ink2);padding:22px 24px"><div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--green);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px">the value</div><div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">future-you (and other designers) know exactly which clue, which path, which assumption broke.</div></div>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--violet)">▸ puzzle-state · terminal-with-findings</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 11 — DEPLOY BUNDLE ============================ -->
+<section data-label="The deploy bundle" data-speaker-notes="Packaging turns a tested puzzle into something a stranger can actually play. The deploy/ folder shape depends on the artifact_kind. html-static is just a folder + RUN.md. PDF puzzles get the printable and a quick RUN. docker-web puzzles get a full Dockerfile + compose + GHCR image. ARG breadcrumb-packs get a zip plus planting instructions. The bundle is self-contained — share it without a registry." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 11 · The deploy bundle</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">deploy/ — shaped by <span style="color:var(--violet)">artifact_kind.</span></h1>
+  <div class="rise3" style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:22px;margin-top:38px">
+    <div style="border:1px solid var(--line2);background:var(--ink2);display:flex;flex-direction:column">
+      <div style="padding:16px 22px;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)">html-static</div>
+      <div style="padding:22px 24px;flex:1;display:flex;flex-direction:column;gap:8px;font-family:var(--fm);font-size:21px;color:var(--paper);line-height:1.55">
+        <div>deploy/</div>
+        <div>&nbsp;&nbsp;index.html</div>
+        <div>&nbsp;&nbsp;assets/</div>
+        <div>&nbsp;&nbsp;RUN.md<span style="color:var(--faint)">&nbsp;&nbsp;open index.html in a browser</span></div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--line2);background:var(--ink2);display:flex;flex-direction:column">
+      <div style="padding:16px 22px;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--teal)">pdf · paper</div>
+      <div style="padding:22px 24px;flex:1;display:flex;flex-direction:column;gap:8px;font-family:var(--fm);font-size:21px;color:var(--paper);line-height:1.55">
+        <div>deploy/</div>
+        <div>&nbsp;&nbsp;puzzle.pdf<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;&nbsp;printable</span></div>
+        <div>&nbsp;&nbsp;preview.png</div>
+        <div>&nbsp;&nbsp;RUN.md<span style="color:var(--faint)">&nbsp;&nbsp;print &amp; solve</span></div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--line2);background:var(--ink2);display:flex;flex-direction:column">
+      <div style="padding:16px 22px;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--violet)">docker-web · casual-web / escape</div>
+      <div style="padding:22px 24px;flex:1;display:flex;flex-direction:column;gap:8px;font-family:var(--fm);font-size:21px;color:var(--paper);line-height:1.55">
+        <div>deploy/</div>
+        <div>&nbsp;&nbsp;Dockerfile</div>
+        <div>&nbsp;&nbsp;compose.yaml</div>
+        <div>&nbsp;&nbsp;RUN.md</div>
+        <div style="color:var(--green)">&nbsp;&nbsp;+ ghcr.io/davidolsson/puz-NNNN</div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--line2);background:var(--ink2);display:flex;flex-direction:column">
+      <div style="padding:16px 22px;border-bottom:1px solid var(--line2);font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--rose)">breadcrumb-pack · arg / treasure-hunt</div>
+      <div style="padding:22px 24px;flex:1;display:flex;flex-direction:column;gap:8px;font-family:var(--fm);font-size:21px;color:var(--paper);line-height:1.55">
+        <div>deploy/</div>
+        <div>&nbsp;&nbsp;pack.zip<span style="color:var(--faint)">&nbsp;&nbsp;&nbsp;all surfaces</span></div>
+        <div>&nbsp;&nbsp;planting.md<span style="color:var(--faint)">&nbsp;where to drop each clue</span></div>
+        <div>&nbsp;&nbsp;timing.yaml<span style="color:var(--faint)">&nbsp;&nbsp;release schedule</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="rise4" style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);margin:22px 0 0">Every bundle includes <span style="color:var(--yellow)">RUN.md</span> — the exact playtest instructions plus where the gated solution lives.</p>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · four bundle shapes</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 12 — PUBLISHING FAN-OUT ============================ -->
+<section data-label="Publishing fan-out" data-speaker-notes="Publishing fans out to three surfaces, with a critical asymmetry. The public gist holds the report — no solution. The scsiwyg blog goes auto, in your voice — also no solution. The gated solution gist is separate, secret, linked only from RUN.md or the report's footer for those who want it. The publisher scrubs every output against the known secret set and runs a solution-leak guard before any of it ships." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 12 · Publishing fan-out</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">One record. <span style="color:var(--yellow)">Three surfaces.</span> Solution gated.</h1>
+  <div class="rise3" style="flex:1;display:flex;align-items:center;gap:38px;margin-top:46px">
+    <div style="flex:0 0 320px;border:1.5px solid var(--yellow);background:linear-gradient(180deg,rgba(246,172,45,.10),rgba(246,172,45,.02));box-shadow:0 0 60px rgba(246,172,45,.16);padding:36px 28px;display:flex;flex-direction:column;gap:14px;text-align:center">
+      <div style="font-family:var(--fm);font-size:25px;color:var(--yellow)">puzzle.yaml</div>
+      <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">The record. Single source.</div>
+      <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint);margin-top:auto">→ scrub + redact →</div>
+    </div>
+    <div style="color:var(--yellow);font-size:40px">→</div>
+    <div style="flex:1;display:flex;flex-direction:column;gap:14px">
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:20px 26px;display:flex;align-items:flex-start;gap:18px">
+        <div style="flex:0 0 150px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--yellow);font-weight:600">Gist · public</div>
+        <div style="flex:1">
+          <div style="font-family:var(--fh);font-weight:600;font-size:23px;color:var(--paper);margin-bottom:4px">The report — no solution</div>
+          <div style="font-family:var(--fh);font-size:21px;color:var(--dim);line-height:1.4">report.md + link to deploy bundle. Auto.</div>
+        </div>
+      </div>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:20px 26px;display:flex;align-items:flex-start;gap:18px">
+        <div style="flex:0 0 150px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--teal);font-weight:600">Blog · scsiwyg</div>
+        <div style="flex:1">
+          <div style="font-family:var(--fh);font-weight:600;font-size:23px;color:var(--paper);margin-bottom:4px">The writeup, in voice</div>
+          <div style="font-family:var(--fh);font-size:21px;color:var(--dim);line-height:1.4">Auto-publish locked ON. Public. No solution in body.</div>
+        </div>
+      </div>
+      <div style="border:1.5px solid var(--violet);background:rgba(146,147,198,.05);padding:20px 26px;display:flex;align-items:flex-start;gap:18px">
+        <div style="flex:0 0 150px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--violet);font-weight:600">Solution · gated</div>
+        <div style="flex:1">
+          <div style="font-family:var(--fh);font-weight:600;font-size:23px;color:var(--paper);margin-bottom:4px">Separate secret gist</div>
+          <div style="font-family:var(--fh);font-size:21px;color:var(--dim);line-height:1.4">solution.md — separately published, secret URL, linked only from RUN.md.</div>
+        </div>
+      </div>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:20px 26px;display:flex;align-items:flex-start;gap:18px">
+        <div style="flex:0 0 150px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--green);font-weight:600">work-state</div>
+        <div style="flex:1">
+          <div style="font-family:var(--fh);font-weight:600;font-size:23px;color:var(--paper);margin-bottom:4px"><span style="font-family:var(--fm)">design</span> + <span style="font-family:var(--fm)">publish</span> events</div>
+          <div style="font-family:var(--fh);font-size:21px;color:var(--dim);line-height:1.4">The activity is itself harvestable.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rise4" style="margin-top:24px;border:1.5px solid var(--rose);background:rgba(224,83,61,.05);padding:18px 24px;display:flex;align-items:center;gap:18px">
+    <div style="font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--rose);font-weight:600">scrub + solution-leak guard</div>
+    <div style="font-family:var(--fh);font-size:var(--t-small);color:var(--dim);line-height:1.4">No token enters the container; no token exits the host; <span style="color:var(--violet)">solution.md</span> is checked against gist/blog bodies before any send.</div>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · gist + blog + gated solution</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 13 — INSTALL & LOCKED DECISIONS ============================ -->
+<section data-label="Install &amp; locked decisions" data-speaker-notes="Install paths flow through Claude Code's plugin system because this repo is a one-plugin marketplace. The locked configuration on the right is the set of decisions that are closed in this version. Channel is #development with the puzzle-piece emoji, self-only. Blog auto-publishes. The GHCR push is on for web/ARG runtimes. Solution gating is mandatory. The mirror remote is left null on init — you set it yourself once your private repo exists." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:column;overflow:hidden;position:relative">
+  <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:30px">
+    <span style="width:9px;height:9px;background:var(--yellow)"></span>
+    <span>§ 13 · Install &amp; locked decisions</span>
+  </div>
+  <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0">Install in one command. <span style="color:var(--teal)">Six decisions locked.</span></h1>
+  <div class="rise3" style="flex:1;display:grid;grid-template-columns:1.15fr 1fr;gap:48px;margin-top:46px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">Install paths · pick one</div>
+      <pre style="margin:0;background:var(--ink2);border:1px solid var(--line2);padding:24px 28px;font-family:var(--fm);font-size:20px;line-height:1.55;color:var(--paper);overflow:hidden"><span style="color:var(--dim)"># 1. From the public marketplace</span>
+/plugin marketplace add <span style="color:var(--yellow)">worksona</span>/puzzle-state
+/plugin install puzzle-state@puzzle-state
+
+<span style="color:var(--dim)"># 2. From a local clone</span>
+git clone &lt;url&gt; ~/src/puzzle-state
+/plugin marketplace add ~/src/puzzle-state
+/plugin install puzzle-state@puzzle-state
+
+<span style="color:var(--dim)"># Then, in your shell, once:</span>
+bash scripts/init-facility.sh
+<span style="color:var(--dim)"># From a Claude Code session:</span>
+/puzzle-orchestrator <span style="color:var(--yellow)">--once</span></pre>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.18em;text-transform:uppercase;color:var(--faint)">Locked decisions · spec §18</div>
+      <div style="border:1px solid var(--line2)">
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;background:var(--ink2);border-bottom:1px solid var(--line2);padding:12px 18px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.16em;text-transform:uppercase;color:var(--faint)"><div>item</div><div>value</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;border-bottom:1px solid var(--line2);padding:13px 18px;font-family:var(--fh);font-size:21px"><div style="color:var(--paper)">Channel + marker</div><div style="color:var(--teal);font-family:var(--fm);font-size:20px">#development · 🧩 · self-only</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;border-bottom:1px solid var(--line2);padding:13px 18px;font-family:var(--fh);font-size:21px"><div style="color:var(--paper)">Solution gating</div><div style="color:var(--violet);font-family:var(--fm);font-size:20px">separate gist · never in body</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;border-bottom:1px solid var(--line2);padding:13px 18px;font-family:var(--fh);font-size:21px"><div style="color:var(--paper)">Blog publishing</div><div style="color:var(--green);font-family:var(--fm);font-size:20px">auto-publish · scsiwyg</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;border-bottom:1px solid var(--line2);padding:13px 18px;font-family:var(--fh);font-size:21px"><div style="color:var(--paper)">Packaging push</div><div style="color:var(--green);font-family:var(--fm);font-size:20px">YES — ghcr.io/davidolsson</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;border-bottom:1px solid var(--line2);padding:13px 18px;font-family:var(--fh);font-size:21px"><div style="color:var(--paper)">Durability mirror</div><div style="color:var(--yellow);font-family:var(--fm);font-size:20px">GitHub private · set manually</div></div>
+        <div style="display:grid;grid-template-columns:1fr 1.4fr;padding:13px 18px;font-family:var(--fh);font-size:21px"><div style="color:var(--paper)">Facility location</div><div style="color:var(--teal);font-family:var(--fm);font-size:20px">~/bazaar/ visible · state/ subfolder</div></div>
+      </div>
+      <div style="border:1px solid var(--line2);background:var(--ink2);padding:18px 22px;font-family:var(--fh);font-size:20px;color:var(--dim);line-height:1.45">Required: <span style="font-family:var(--fm);color:var(--paper)">Docker Desktop</span> running · <span style="font-family:var(--fm);color:var(--paper)">$GHCR_TOKEN</span> exported · secrets registered under <span style="font-family:var(--fm);color:var(--paper)">anthropic · slack · github · scsiwyg · ghcr</span>.</div>
+    </div>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · v0.1 · one-plugin marketplace</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span></div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+<!-- ============================ SLIDE 14 — CURIOSITY, CURATED ============================ -->
+<section data-label="Curiosity, curated nightly" data-speaker-notes="The closing frame. You don't have more hours in the day, but you now have a puzzle-shop running the night shift. You mark a source with a single emoji on a Slack post you were going to share anyway, or drop a URL in the inbox. The work happens in a sealed sandbox. And by morning a puzzle exists — designed, built, playtested, packaged, written up, and quietly waiting for someone to come solve it. Run it on demand with the orchestrator's --once flag while you're proving the path; flip the launchd timer when you're ready." style="background:var(--ink);color:var(--paper);font-family:var(--fh);padding:96px var(--px) 150px;display:flex;flex-direction:row;align-items:center;gap:80px;overflow:hidden;position:relative">
+  <div style="flex:0 0 820px;display:flex;flex-direction:column">
+    <div class="rise" style="display:flex;align-items:center;gap:14px;font-size:var(--t-eyebrow);font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--green);margin-bottom:44px">
+      <span style="width:9px;height:9px;background:var(--green)"></span>
+      <span>§ 14 · Curiosity, curated</span>
+    </div>
+    <h1 class="rise2" style="font-family:var(--fh);font-weight:500;font-size:var(--t-title-lg);line-height:1.02;letter-spacing:-0.025em;color:var(--paper);margin:0;max-width:16ch">Curiosity, <span style="color:var(--yellow);font-style:italic">curated nightly.</span></h1>
+    <p class="rise3" style="font-family:var(--fh);font-weight:400;font-size:var(--t-sub);line-height:1.35;color:var(--dim);margin:46px 0 0;max-width:28ch">You wake up to a designed puzzle, a playtested artifact, and a writeup waiting in your bazaar.</p>
+    <div class="rise4" style="margin-top:44px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-direction:column;gap:10px;border-left:2px solid var(--yellow);padding:4px 0 4px 18px">
+        <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--yellow)">Install · Claude Code or Cowork</div>
+        <div style="font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper);line-height:1.55"><span style="color:var(--faint)">›</span> /plugin marketplace add <span style="color:var(--yellow)">worksona/puzzle-state</span><br><span style="color:var(--faint)">›</span> /plugin install <span style="color:var(--yellow)">puzzle-state@puzzle-state</span></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;border-left:2px solid var(--violet);padding:4px 0 4px 18px;margin-top:4px">
+        <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--violet)">Then run</div>
+        <div style="font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--faint)">›</span> /puzzle-orchestrator <span style="color:var(--violet)">--once</span></div>
+        <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint)">prove the path on three to five sources before enabling the timer.</div>
+      </div>
+      <div style="display:flex;gap:22px;align-items:center;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint);flex-wrap:wrap;margin-top:8px">
+        <a href="https://github.com/worksona/puzzle-state" style="color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:3px">github.com/worksona/puzzle-state</a>
+        <span style="color:var(--line2)">·</span>
+        <a href="https://puzzle-state.netlify.app" style="color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:3px">puzzle-state.netlify.app</a>
+      </div>
+    </div>
+  </div>
+  <div class="rise4" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:22px">
+    <div style="font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.22em;text-transform:uppercase;color:var(--faint);align-self:flex-start">A morning, in the bazaar</div>
+    <div style="border:1.5px solid var(--green);background:linear-gradient(180deg,rgba(123,168,107,.08),rgba(123,168,107,.01));padding:30px 30px;width:100%;display:flex;flex-direction:column;gap:14px">
+      <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--green);letter-spacing:.2em;text-transform:uppercase">tonight's run</div>
+      <div style="font-family:var(--fh);font-size:32px;color:var(--paper);font-weight:500">4 designed · 1 unsolvable · 1 carried</div>
+      <div style="font-family:var(--fm);font-size:var(--t-micro);color:var(--faint)">posted to #development · 6 public gists · 5 gated solution gists · 5 blog posts · 11 work-state events</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;width:100%;margin-top:6px">
+      <div style="border:1px solid var(--line2);padding:14px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--yellow);width:22px">▸</span>PUZ-0084 · voynich-folio-86v · cipher <span style="color:var(--green);margin-left:auto;font-size:var(--t-micro)">published</span></div>
+      <div style="border:1px solid var(--line2);padding:14px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--teal);width:22px">▸</span>PUZ-0085 · labyrinth-mythos · escape <span style="color:var(--green);margin-left:auto;font-size:var(--t-micro)">published</span></div>
+      <div style="border:1px solid var(--line2);padding:14px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--paper)"><span style="color:var(--violet);width:22px">▸</span>PUZ-0086 · stone-rose-riddle <span style="color:var(--violet);margin-left:auto;font-size:var(--t-micro)">unsolvable · published</span></div>
+      <div style="border:1px solid var(--line2);padding:14px 18px;display:flex;align-items:center;gap:14px;font-family:var(--fm);font-size:var(--t-mono-sm);color:var(--dim)"><span style="color:var(--faint);width:22px">▸</span>PUZ-0087 · midnight-arg <span style="color:var(--faint);margin-left:auto;font-size:var(--t-micro)">carried — budget</span></div>
+    </div>
+    <div style="margin-top:auto;font-family:var(--fh);font-size:var(--t-body);color:var(--dim);align-self:flex-start;font-style:italic">Mark once. <span style="color:var(--yellow)">Puzzle forever.</span></div>
+  </div>
+  <div style="position:absolute;left:var(--px);bottom:92px;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint)">▸ puzzle-state · sibling to forge-state · desk-state · work-state · notella</div>
+  <div style="position:absolute;right:var(--px);bottom:92px;text-align:right;font-family:var(--fm);font-size:var(--t-micro);letter-spacing:.05em;color:var(--faint);white-space:nowrap"><span style="font-family:var(--fh);font-weight:300;letter-spacing:.14em;color:var(--dim)">ATOMIC47 LABS</span>&nbsp;&nbsp;·&nbsp;&nbsp;David Olsson</div>
+  <div style="position:absolute;left:var(--px);right:var(--px);bottom:56px;height:18px">
+    <div style="position:absolute;left:0;right:0;top:8px;height:1px;background:var(--line2)"></div>
+    <div data-progress style="position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center"></div>
+  </div>
+</section>
+
+</div>
+<script src="./deck.js"></script>
+</body>
+</html>

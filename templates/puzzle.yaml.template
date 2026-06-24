@@ -1,0 +1,59 @@
+id: PUZ-NNNN
+slug: ""
+phase: candidate
+created: ""
+updated: ""
+
+source:
+  surface: ""              # slack | inbox | query
+  channel: ""
+  message_ts: ""
+  marked_by: ""
+  marked_with: ""
+  url: ""
+  prompt: ""
+
+research:
+  theme: ""
+  mechanics_inspiration: ""
+  comparables: []
+  source_refs: []
+
+design:
+  type: ""                 # cipher | logic | paper | casual-web | arg | riddle | escape | treasure-hunt
+  template: ""
+  difficulty_target: ""
+  win_condition: ""
+  estimated_solve_time_min: 0
+
+build:
+  artifact_kind: ""        # html-static | pdf | breadcrumb-pack | docker-web | scsiwyg-post
+  base_image: null
+  exit_code: null
+  duration_s: null
+  status: null             # built | build-failed
+
+test:
+  solver_passed: null
+  unique_solution: null
+  difficulty_actual: ""
+  notes: ""
+  status: null             # solvable | unsolvable | ambiguous
+
+package:
+  bundle_ref: null
+  image: null
+
+report:
+  ref: null
+  solution_ref: null
+
+curation:
+  collection_ids: []
+  tags: []
+
+outputs:
+  gist_url: null
+  blog_post_id: null
+  solution_gist_url: null
+  work_state_event_id: null

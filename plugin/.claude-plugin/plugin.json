@@ -1,0 +1,19 @@
+{
+  "name": "puzzle-state",
+  "version": "0.1.0",
+  "description": "Local-first bazaar of puzzles and puzzling things. Drop an input — a 🧩 Slack reaction, a source URL, or a query — and nightly puzzle-state researches it, designs a puzzle (cipher, logic, paper, casual web, ARG, riddle, escape, treasure-hunt), builds the artifact inside a sealed sandbox, playtests it for solvability, packages it, and ships a writeup + a runnable bundle. Unsolvable puzzles are kept as findings, not discarded.",
+  "author": {
+    "name": "David Olsson",
+    "url": "https://atomic47.co"
+  },
+  "license": "MIT",
+  "keywords": [
+    "puzzles",
+    "arg",
+    "ciphers",
+    "games",
+    "bazaar",
+    "local-first",
+    "sandbox"
+  ]
+}

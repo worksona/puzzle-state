@@ -1,0 +1,13 @@
+.DS_Store
+*.swp
+*.swo
+*~
+dist/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+
+# Local Netlify folder
+.netlify
+.orphaned_at

@@ -1,0 +1,87 @@
+facility: puzzle-state
+version: 0.1
+root: ~/bazaar
+
+intake:
+  slack:
+    enabled: true
+    channels: ["#development"]
+    marker: "🧩"
+    markers_self_only: true
+  inbox:
+    enabled: true
+    path: ~/bazaar/inbox
+  sources:
+    # Free-form recurring source feeds — RSS, archives, prompt seeds.
+    # Each entry becomes a candidate when puzzle-harvester-sources runs.
+    - kind: prompt-seed
+      name: "weekly theme"
+      value: "make a beginner cipher inspired by something atmospheric"
+      cadence: weekly
+
+sandbox:
+  runtime: docker
+  base_images:
+    static-html: node:20
+    pdf: ubuntu:24.04
+    web-game: node:20
+    arg-pack: ubuntu:24.04
+    generic: ubuntu:24.04
+  egress: registries-only
+  cpu: 2
+  memory: 4g
+  per_puzzle_timeout_s: 1200
+  night_budget_s: 14400
+
+design:
+  default_difficulty: beginner
+  allowed_types:
+    - cipher
+    - logic
+    - paper
+    - casual-web
+    - arg
+    - riddle
+    - escape
+    - treasure-hunt
+
+testing:
+  solver:
+    require_unique_solution: false   # set true to fail on ambiguity
+    max_solve_time_s: 600
+
+packaging:
+  emit_bundle: true
+  push_image: true                   # only for docker-web / arg-pack artifacts
+  registry: ghcr.io/davidolsson
+
+surfaces:
+  gist:
+    enabled: true
+    auto: true
+    solution_gist:
+      enabled: true
+      visibility: secret             # secret | private | public
+  blog:
+    target: scsiwyg
+    auto: true
+    solution_post:
+      enabled: true
+      visibility: subscribers        # subscribers | members | public
+  work_state:
+    enabled: true
+
+curation:
+  auto_collection: true              # curator may auto-bin into themed collections
+  tag_taxonomy: [cipher, logic, paper, casual-web, arg, riddle, escape, treasure-hunt,
+                 beginner, intermediate, advanced,
+                 atmospheric, playful, dark, historical, futurist]
+
+durability:
+  mirror:
+    kind: github
+    remote: null  # e.g. git@github.com:davidolsson/bazaar-mirror.git
+
+secrets:
+  store: sops-age
+  refs: [anthropic, slack, github, scsiwyg, ghcr]
