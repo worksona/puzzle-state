@@ -4,6 +4,32 @@ A local-first bazaar of puzzles and puzzling things. You drop an input — a que
 
 Sibling to `forge-state`, `desk-state`, `work-state`, and `notella`. Models the same single-writer / file-per-entity / two-plane pattern as forge-state; the domain is puzzles, not open-source code.
 
+## Where everything lives
+
+| Thing | Location |
+|---|---|
+| Engine / plugin / skills (this repo) | `~/WORKSONA/puzzle-state/` → https://github.com/worksona/puzzle-state |
+| Data plane (puzzles, solutions, state) | `~/bazaar/` → https://github.com/worksona/bazaar-data (**private**) |
+| Public puzzle site | https://puzzle-state.netlify.app (Netlify project `puzzle-state`, team worksona, site id `4c4e7ff5-28b3-4923-807b-bcac8fc0a1e6`) |
+| Onboarding deck | https://puzzle-state.netlify.app/deck/ — source `deck/` here |
+| Legacy GitHub Pages mirror | https://worksona.github.io/bazaar/ (repo `worksona/bazaar` is generated output only) |
+| Plugin install | `puzzle-state@local-desktop-app-uploads` — symlink `~/.claude/plugins/marketplaces/local-desktop-app-uploads/puzzle-state → ./plugin` |
+
+Publishing is run from the data plane: `bash ~/bazaar/deploy.sh` stages only `site/index.html` +
+`puzzles/*/artifact/` (+ this repo's `deck/`) and deploys to Netlify. Solutions never leave the
+private repo.
+
+## Repo layout
+
+```
+plugin/               Claude Code plugin (12 puzzle-* skills) — canonical skill source
+deck/                 onboarding deck (served at /deck/ on the public site)
+puzzle-state-spec.md  full spec
+schemas/              puzzle.schema.yaml
+templates/            manifest.yaml / puzzle.yaml templates
+scripts/              init-facility.sh · test-run.sh
+```
+
 ## Quickstart
 
 ```bash

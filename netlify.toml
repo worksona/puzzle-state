@@ -1,8 +1,8 @@
+# Netlify project "puzzle-state" (team worksona, https://puzzle-state.netlify.app).
+# The site is NOT built from this repo. It is deployed by ~/bazaar/deploy.sh, which stages
+# the public puzzle subset from the private data repo (worksona/bazaar-data) plus this repo's
+# deck/ at /deck/, then runs `netlify deploy --prod --dir <stage> --site <id>`.
+# This file only documents the project link; `publish` is a fallback for ad-hoc CLI deploys.
 [build]
-  publish = "site"
+  publish = "deck"
   command = ""
-
-[[redirects]]
-  from = "/"
-  to = "/index.html"
-  status = 200
