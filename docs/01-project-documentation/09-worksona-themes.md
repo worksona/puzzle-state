@@ -37,7 +37,7 @@ puzzle-state is a map-first project that shipped: the spec was written before th
 
 **Gaps:**
 - The runbook's demo loop ends in "Analyze user-visible signals." There are none. The public site has no analytics; no user-visible signal from any of the eighteen shipped artifacts reaches back into the facility.
-- Two commits total (`4ebd37d` initial scaffold, `c9d73dc` site→deck reorganization) means the incremental-slice discipline is invisible in the engine repo's history even where it clearly happened in practice.
+- Two commits total (`4ebd37d` initial scaffold, `1330cac` site→deck reorganization) means the incremental-slice discipline is invisible in the engine repo's history even where it clearly happened in practice.
 
 **Recommendation:** Add the missing half of the loop. One privacy-respecting counter on `/p/<PUZ-id>/` — puzzle opened, win condition reached — turns eighteen shipped artifacts into eighteen demo signals and feeds `/enforce-measurement` at the same time.
 

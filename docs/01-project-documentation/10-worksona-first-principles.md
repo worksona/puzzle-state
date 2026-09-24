@@ -252,7 +252,7 @@ puzzle-state is a system whose *design* is close to a textbook expression of man
 - The manifest anticipates growth: `intake.sources[]` entries are annotated `kind: rss (future)` and `kind: archive (future)`.
 
 **Gaps:**
-- **Two commits, no tags, no CHANGELOG.** `4ebd37d` (initial scaffold) and `c9d73dc` (site→deck reorganization). The `0.1.0` in two hand-synced JSON files is the only version marker in existence.
+- **Two commits, no tags, no CHANGELOG.** `4ebd37d` (initial scaffold) and `1330cac` (site→deck reorganization). The `0.1.0` in two hand-synced JSON files is the only version marker in existence.
 - **Real evolution happened, ungoverned.** `~/bazaar/state/state.json` records `"artifacts": {"version": "v3", "upgraded": 18, "upgraded_at": "2026-08-23T18:05:00Z", "flag_storage": "encrypted-under-solution (logic wing) / sha256-hash (cipher wing)"}`. Eighteen artifacts were migrated in place through at least three versions. Nothing in this repo's spec, schema, skills, or README mentions artifact versioning, the v3 pass, or the flag-storage scheme. A migration occurred and left no trace in the structure that governs it.
 - **The taxonomy evolved without a migration.** Three records carry `design.type` values added in practice and never added to the enum.
 - **No deprecation policy.** The handbook requires that "Deprecated charts MUST emit telemetry warnings" and "Removal MUST follow a migration plan." Neither concept appears.
